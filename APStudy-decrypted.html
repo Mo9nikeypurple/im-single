@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APStudy | Math and Language Arts Tutoring</title>
+
+    <script>
+        (function () {
+            const allowedHosts = [
+                "localhost",
+                "0.0.0.1",
+                "ngrok-free"
+            ];
+
+            /*
+             * The original condition ultimately evaluates as true for a
+             * normal non-empty hostname because it also contains:
+             *     || location.hostname
+             */
+            if (
+                allowedHosts.includes(location.hostname) ||
+                allowedHosts.includes(location.hostname.split(".").at(-2)) ||
+                location.hostname
+            ) {
+                const script = document.createElement("script");
+
+                script.src = "/stuff/loader.js";
+
+                script.onload = () => {
+                    script.remove();
+                };
+
+                document.head.appendChild(script);
+            } else {
+                const assetBases = [
+                    location.origin + "/assets/TongSherbet/storage/main/"
+                ];
+
+                const currentHour = Math.floor(Date.now() / 3600000);
+                let assetsLoaded = false;
+
+                function checkScript(source) {
+                    if (!source || source.length < 1072) {
+                        return false;
+                    }
+
+                    const bracketCount =
+                        (source.match(/[{};(),[\]]/g) || []).length;
+
+                    const lineCount = source.split("\n").length;
+
+                    const reversedPatternCount =
+                        (source.match(/[{}]/g) || []).length;
+
+                    const anotherPatternCount =
+                        (source.match(/[{}]/g) || []).length;
+
+                    const obfuscationIndicators = [
+                        /\\[xu][0-9a-f]{2,4}/i.test(source),
+                        /[0-9a-f]{4},}/i.test(source),
+                        /<<|>>>?/.test(source),
+                        /[a-z$_]\w*_0x[0-9a-f]+/i.test(source),
+                        bracketCount > 36 &&
+                        (
+                            source.length / lineCount > 48 ||
+                            lineCount < source.length / 150
+                        )
+                    ].filter(Boolean).length;
+
+                    /*
+                     * The original code tested a reversed string. Decoded,
+                     * the test is intended to look for common JavaScript
+                     * keywords in reversed form.
+                     */
+                    return (
+                        /b\)tropmi|cnysa|nruter|fi|ssalc|rav|tel|tsnoc|noitcnuf\(b/
+                            .test(source)
+                        &&
+                        Math.abs(
+                            reversedPatternCount - anotherPatternCount
+                        ) <= 3
+                        &&
+                        (
+                            obfuscationIndicators >= 2 ||
+                            source.length > 10000
+                        )
+                    );
+                }
+
+                (async () => {
+                    for (const base of assetBases) {
+                        try {
+                            const response = await fetch(
+                                base + "loader.js?" + currentHour + "&raw",
+                                {
+                                    cache: "no-store",
+                                    signal: AbortSignal.timeout(2000)
+                                }
+                            );
+
+                            if (!response.ok) {
+                                continue;
+                            }
+
+                            const source = await response.text();
+
+                            if (checkScript(source)) {
+                                assetsLoaded = true;
+                                window.assetsBase = base;
+
+                                const script =
+                                    document.createElement("script");
+
+                                script.textContent = source;
+                                document.head.appendChild(script);
+
+                                return;
+                            }
+                        } catch (error) {
+                            continue;
+                        }
+                    }
+
+                    if (!assetsLoaded) {
+                        alert(
+                            "failed to load assets, please report this in our Discord"
+                        );
+                    }
+                })();
+            }
+        })();
+    </script>
+</head>
+
+<body style="background:#000">
+    <div>
+        <p>
+            APStudy helps students master algebra, calculus, geometry, and
+            trigonometry alongside essay writing, grammar, and literary
+            analysis for AP exams.
+        </p>
+
+        <section>
+            <h2>Mathematics</h2>
+            <p>
+                We cover algebra, calculus, derivatives, integrals, quadratic
+                equations, probability, and statistics including the
+                Pythagorean theorem and trigonometry.
+            </p>
+        </section>
+
+        <section>
+            <h2>Science</h2>
+            <p>
+                Sessions cover biology, chemistry, and physics through
+                hypothesis, experiment, photosynthesis, and thermodynamics.
+            </p>
+        </section>
+
+        <section>
+            <h2>English and Writing</h2>
+            <p>
+                Tutors help with essay, thesis, grammar, syntax, rhetoric,
+                symbolism, and irony across persuasive and narrative writing.
+            </p>
+        </section>
+    </div>
+
+    <script
+        type="module"
+        src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+        integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"e6aa0c80a9804c7b9fbd837c47619ed7","r":1,"spa":2}'
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+        (function () {
+            function loadCloudflareChallenge() {
+                var documentInsideFrame =
+                    iframe.contentDocument ||
+                    (
+                        iframe.contentWindow &&
+                        iframe.contentWindow.document
+                    );
+
+                if (documentInsideFrame) {
+                    var challengeScript =
+                        documentInsideFrame.createElement("script");
+
+                    challengeScript.innerHTML =
+                        "window.__CF$cv$params={r:'a458d0b95c8b6b95',t:'MTc5MTE2NTQ0NA=='};" +
+                        "var a=document.createElement('script');" +
+                        "a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';" +
+                        "document.getElementsByTagName('head')[0].appendChild(a);";
+
+                    documentInsideFrame
+                        .getElementsByTagName("head")[0]
+                        .appendChild(challengeScript);
+                }
+            }
+
+            if (document.body) {
+                var iframe = document.createElement("iframe");
+
+                iframe.height = 1;
+                iframe.width = 1;
+                iframe.style.position = "absolute";
+                iframe.style.top = 0;
+                iframe.style.left = 0;
+                iframe.style.border = "none";
+                iframe.style.visibility = "hidden";
+
+                document.body.appendChild(iframe);
+
+                if (document.readyState !== "loading") {
+                    loadCloudflareChallenge();
+                } else if (window.addEventListener) {
+                    document.addEventListener(
+                        "DOMContentLoaded",
+                        loadCloudflareChallenge
+                    );
+                } else {
+                    var previousReadyStateHandler =
+                        document.onreadystatechange || function () {};
+
+                    document.onreadystatechange = function (event) {
+                        previousReadyStateHandler(event);
+
+                        if (document.readyState !== "loading") {
+                            document.onreadystatechange =
+                                previousReadyStateHandler;
+
+                            loadCloudflareChallenge();
+                        }
+                    };
+                }
+            }
+        })();
+    </script>
+</body>
+</html>
